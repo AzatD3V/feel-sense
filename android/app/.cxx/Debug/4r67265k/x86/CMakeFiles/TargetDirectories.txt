@@ -1,0 +1,2 @@
+/home/neo/projects/xxx/android/app/.cxx/Debug/4r67265k/x86/CMakeFiles/edit_cache.dir
+/home/neo/projects/xxx/android/app/.cxx/Debug/4r67265k/x86/CMakeFiles/rebuild_cache.dir

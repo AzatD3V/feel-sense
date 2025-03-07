@@ -1,0 +1,39 @@
+# Flutter build folders
+build/
+android/.gradle/
+ios/Pods/
+pubspec.lock
+*.iml
+*.log
+
+# Personal settings folders
+.vscode/
+.idea/
+*.swp
+
+# System folders  (Added!)
+.DS_Store
+Thumbs.db
+*.bash_history
+*.bash_logout
+*.bashrc
+*.profile
+*.xsession-errors
+.snap/
+.android/
+.cache/
+.config/
+.local/
+.pub-cache/
+.ssh/
+
+# Flutter platform folders
+linux/
+macos/
+windows/
+web/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
