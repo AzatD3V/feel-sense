@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
               create: (context) => AuthBloc(authServices: AuthServices()))
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false, home: SelectionScreen()
+            debugShowCheckedModeBanner: false, home: HobbiesSelectionScreen()
             //LoginScreen(),
             ));
   }
