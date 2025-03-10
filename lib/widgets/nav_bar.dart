@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:xxx/screens/home_screen.dart';
-import 'package:xxx/screens/profile_screen.dart';
 import 'package:xxx/screens/records_screen.dart';
 
 class NavBar extends StatefulWidget {
@@ -14,7 +13,10 @@ class _NavBarState extends State<NavBar> {
   int selectedIndex = 0;
   final PageStorageBucket _bucket = PageStorageBucket();
 
-  final List<Widget> _screens = [HomePage(), RecordsScreen(), ProfileScreen()];
+  final List<Widget> _screens = [
+    HomePage(),
+    RecordsScreen(),
+  ];
 
   void _onItemTap(int index) {
     setState(() {

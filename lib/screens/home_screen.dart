@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xxx/services/together_ai_services.dart';
 import '../image_processing.dart';
-import '../tflite_model.dart';
+import '../model/tflite_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

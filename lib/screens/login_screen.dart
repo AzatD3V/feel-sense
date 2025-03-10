@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xxx/screens/hobbies_selection_screen.dart';
 import 'package:xxx/services/auth_services.dart';
 import 'package:xxx/logic/bloc/auth_bloc.dart';
 import 'package:xxx/logic/bloc/auth_state.dart';
@@ -29,7 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is Authenticated) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const NavBar()),
+            MaterialPageRoute(
+                builder: (context) => const HobbiesSelectionScreen()),
           );
         }
       },
@@ -50,14 +52,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-}
-
-class DenemeSayfa extends StatelessWidget {
-  const DenemeSayfa({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
