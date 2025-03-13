@@ -8,7 +8,6 @@ import 'package:xxx/widgets/app_name.dart';
 import 'package:xxx/widgets/app_slogan.dart';
 import 'package:xxx/widgets/google_sign_button.dart';
 import 'package:xxx/widgets/image_opacty.dart';
-import 'package:xxx/widgets/nav_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
