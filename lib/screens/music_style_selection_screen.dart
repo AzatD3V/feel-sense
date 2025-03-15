@@ -19,7 +19,15 @@ class _MusicStyleSelectionState extends State<MusicStyleSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppbar(title: 'Music'),
+      appBar: CustomAppbar(
+        title: 'Music',
+        action: ApplyButton(
+            screen: ProfileScreen(
+              hobbies: widget.hobbies,
+              musicStyle: selectedOptions,
+            ),
+            selectedOptions: selectedOptions),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -39,12 +47,6 @@ class _MusicStyleSelectionState extends State<MusicStyleSelection> {
                   SizedBox(
                     height: 20,
                   ),
-                  ApplyButton(
-                      screen: ProfileScreen(
-                        hobbies: widget.hobbies,
-                        musicStyle: selectedOptions,
-                      ),
-                      selectedOptions: selectedOptions)
                 ],
               ),
             ),

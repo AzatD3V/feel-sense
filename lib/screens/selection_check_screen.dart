@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:xxx/logic/bloc/db_bloc.dart';
+import 'package:xxx/logic/bloc/db_event.dart';
+import 'package:xxx/logic/bloc/db_state.dart';
+import 'package:xxx/screens/home_screen.dart';
 import 'package:xxx/widgets/custom_appbar.dart';
 import 'package:xxx/widgets/options_info_widget.dart';
 
@@ -16,73 +21,60 @@ class SelectionCheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: const CustomAppbar(title: 'Check Info'),
-      body: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              OptionsInfoWidget(options: hobbies, title: 'Your Hobbies'),
-              OptionsInfoWidget(
-                options: musicStyle,
-                title: 'Your Music Style',
-              ),
-              OptionsInfoWidget(
-                options: personalityStyle,
-                title: 'Your Personality',
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          backgroundColor: Color(0xff2D2926),
-                          actions: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text('Cancel')),
-                                ElevatedButton(
-                                    onPressed: () {}, child: Text('OK')),
-                              ],
-                            )
-                          ],
-                          content: Text(
-                            textAlign: TextAlign.center,
-                            'Kaydedilen degisiklikler daha sonra geri degistirilemez, islemi onayliyor musun ? ',
-                            style: GoogleFonts.montserrat(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          title: Text(
-                            'Dikkat',
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, elevation: 5),
-                  child: Text(
-                    'Save All',
-                    style: GoogleFonts.montserrat(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ))
-            ],
-          ),
+        backgroundColor: Colors.white,
+        appBar: CustomAppbar(
+          title: 'Check Info',
         ),
-      ),
-    );
+        body: BlocConsumer<DBBlock, DBState>(
+          listener: (context, state) {
+            if (state is DBSucces) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            } else if (state is DBError) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.error)));
+            }
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OptionsInfoWidget(options: hobbies, title: 'Your Hobbies'),
+                    OptionsInfoWidget(
+                      options: musicStyle,
+                      title: 'Your Music Style',
+                    ),
+                    OptionsInfoWidget(
+                      options: personalityStyle,
+                      title: 'Your Personality',
+                    ),
+                    if (state is DBLoading) CircularProgressIndicator(),
+                    ElevatedButton(
+                        onPressed: () {
+                          context.read<DBBlock>().add(AddUserData(
+                              hobbies: hobbies,
+                              music: musicStyle,
+                              personality: personalityStyle));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white, elevation: 5),
+                        child: Text(
+                          'Save All',
+                          style: GoogleFonts.montserrat(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                        ))
+                  ],
+                ),
+              ),
+            );
+          },
+        ));
   }
 }

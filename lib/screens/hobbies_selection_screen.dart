@@ -20,7 +20,12 @@ class _HobbiesSelectionScreenState extends State<HobbiesSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppbar(title: 'Hobbies'),
+      appBar: CustomAppbar(
+        title: 'Hobbies',
+        action: ApplyButton(
+            screen: MusicStyleSelection(hobbies: selectedOptions),
+            selectedOptions: selectedOptions),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(6.0),
         child: Column(
@@ -39,9 +44,6 @@ class _HobbiesSelectionScreenState extends State<HobbiesSelectionScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  ApplyButton(
-                      screen: MusicStyleSelection(hobbies: selectedOptions),
-                      selectedOptions: selectedOptions)
                 ],
               ),
             ),

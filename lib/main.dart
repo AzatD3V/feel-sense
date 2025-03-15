@@ -2,9 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xxx/logic/bloc/db_bloc.dart';
 import 'package:xxx/screens/intro_screen.dart';
 import 'package:xxx/services/auth_services.dart';
 import 'package:xxx/logic/bloc/auth_bloc.dart';
+import 'package:xxx/services/db_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => AuthBloc(authServices: AuthServices()))
+              create: (context) => AuthBloc(authServices: AuthServices())),
+          BlocProvider(create: (context) => DBBlock(DBServices())),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

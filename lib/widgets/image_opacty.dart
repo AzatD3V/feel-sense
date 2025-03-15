@@ -11,7 +11,7 @@ class FaceImage extends StatelessWidget {
       top: height * 0.09,
       child: Container(
         height: height * 0.25,
-        width: width,
+        width: 500,
         decoration: const BoxDecoration(color: Colors.black),
         child: Row(
           children: [

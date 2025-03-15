@@ -3,11 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppbar({super.key, required this.title});
+  final Widget? action;
+  const CustomAppbar({super.key, required this.title, this.action});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: action != null ? [action!] : [],
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: Colors.black,
       title: Text(

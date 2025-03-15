@@ -21,7 +21,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(title: 'Personality'),
+      appBar: CustomAppbar(
+        title: 'Personality',
+        action: ApplyButton(
+            screen: SelectionCheckScreen(
+                hobbies: widget.hobbies,
+                musicStyle: widget.musicStyle,
+                personalityStyle: selectedOptions),
+            selectedOptions: selectedOptions),
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(6.0),
@@ -41,12 +49,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                ApplyButton(
-                    screen: SelectionCheckScreen(
-                        hobbies: widget.hobbies,
-                        musicStyle: widget.musicStyle,
-                        personalityStyle: selectedOptions),
-                    selectedOptions: selectedOptions)
               ],
             ))
           ],

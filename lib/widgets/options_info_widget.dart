@@ -26,14 +26,13 @@ class OptionsInfoWidget extends StatelessWidget {
           ),
           Wrap(
               alignment: WrapAlignment.center,
-              spacing: 6,
-              runSpacing: 6,
+              spacing: 4,
+              runSpacing: 4,
               children: options.map((item) {
                 return Container(
                   padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                      color: Colors.green, //Color(0xffed6f63),
+                      color: Colors.black, //Color(0xffed6f63),
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
@@ -44,7 +43,7 @@ class OptionsInfoWidget extends StatelessWidget {
                   child: Text(
                     item,
                     style: GoogleFonts.montserrat(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontSize: 14),
                   ),

@@ -56,6 +56,7 @@ class _OptionButtonState extends State<OptionButton> {
 
             return ElevatedButton(
               onPressed: () {
+                print(selectedOptions.length);
                 setState(() {
                   if (isSelected) {
                     selectedOptions.remove(item);
@@ -78,8 +79,8 @@ class _OptionButtonState extends State<OptionButton> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: isSelected ? Colors.green : Colors.black,
-                foregroundColor: isSelected ? Colors.black : Colors.white,
+                backgroundColor: isSelected ? Colors.black : Colors.white,
+                foregroundColor: isSelected ? Colors.white : Colors.black,
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               ),
               child: Text(item, style: TextStyle(fontSize: 14)),

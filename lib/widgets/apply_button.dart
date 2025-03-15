@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ApplyButton extends StatefulWidget {
   final Widget screen;
@@ -16,11 +15,7 @@ class _ApplyButtonState extends State<ApplyButton> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: widget.selectedOptions.length <= 4
-                  ? Colors.black
-                  : Colors.green),
+      child: IconButton(
           onPressed: () {
             if (widget.selectedOptions.length >= 4) {
               Navigator.push(context,
@@ -30,10 +25,11 @@ class _ApplyButtonState extends State<ApplyButton> {
                   .showSnackBar(SnackBar(content: Text('data')));
             }
           },
-          child: Text(
-            "Next",
-            style: GoogleFonts.montserrat(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+          icon: Icon(
+            Icons.arrow_forward,
+            color: widget.selectedOptions.length == 5
+                ? Colors.green
+                : Colors.white,
           )),
     );
   }
