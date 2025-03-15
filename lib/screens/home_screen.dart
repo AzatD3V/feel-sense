@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xxx/services/together_ai_services.dart';
+import 'package:xxx/widgets/custom_appbar.dart';
 import '../image_processing.dart';
 import '../model/tflite_model.dart';
 
@@ -63,15 +64,8 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2D2926),
-      appBar: AppBar(
-        backgroundColor: Color(0xffed6f63),
-        title: Text(
-          "Sentiment analysis",
-          style: TextStyle(color: Colors.black, fontSize: 30),
-        ),
-        centerTitle: true,
-      ),
+      backgroundColor: Colors.white,
+      appBar: CustomAppbar(title: "Analysis"),
       body: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -85,7 +79,7 @@ class HomePageState extends State<HomePage> {
                         children: [
                           Text("Emotion: $detectedEmotion",
                               style:
-                                  TextStyle(fontSize: 24, color: Colors.white)),
+                                  TextStyle(fontSize: 24, color: Colors.black)),
                           if (aiResponse.isNotEmpty)
                             Padding(
                               padding: EdgeInsets.all(16.0),

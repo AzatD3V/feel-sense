@@ -6,6 +6,7 @@ import 'package:xxx/logic/bloc/db_event.dart';
 import 'package:xxx/logic/bloc/db_state.dart';
 import 'package:xxx/screens/home_screen.dart';
 import 'package:xxx/widgets/custom_appbar.dart';
+import 'package:xxx/widgets/nav_bar.dart';
 import 'package:xxx/widgets/options_info_widget.dart';
 
 class SelectionCheckScreen extends StatelessWidget {
@@ -30,8 +31,11 @@ class SelectionCheckScreen extends StatelessWidget {
             if (state is DBSucces) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.message)));
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => NavBar()),
+                (route) => false,
+              );
             } else if (state is DBError) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.error)));

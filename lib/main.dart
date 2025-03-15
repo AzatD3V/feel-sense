@@ -7,6 +7,7 @@ import 'package:xxx/screens/intro_screen.dart';
 import 'package:xxx/services/auth_services.dart';
 import 'package:xxx/logic/bloc/auth_bloc.dart';
 import 'package:xxx/services/db_services.dart';
+import 'package:xxx/widgets/nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +34,8 @@ class _MyAppState extends State<MyApp> {
           BlocProvider(create: (context) => DBBlock(DBServices())),
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: IntroScreen() //LoginScreen(),
-            ));
+          debugShowCheckedModeBanner: false,
+          home: NavBar(),
+        ));
   }
 }
