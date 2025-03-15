@@ -35,13 +35,13 @@ class _OptionButtonState extends State<OptionButton> {
                 style: GoogleFonts.montserrat(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
               Expanded(child: SizedBox()),
               Text(
                 " ${selectedOptions.length.toString()} / ${maxSelections.toString()}",
                 style: GoogleFonts.montserrat(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 14,
                     fontWeight: FontWeight.w600),
               )
@@ -78,9 +78,8 @@ class _OptionButtonState extends State<OptionButton> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    isSelected ? Color(0xffed6f63) : Colors.grey.shade800,
-                foregroundColor: Colors.white,
+                backgroundColor: isSelected ? Colors.green : Colors.black,
+                foregroundColor: isSelected ? Colors.black : Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               ),
               child: Text(item, style: TextStyle(fontSize: 14)),

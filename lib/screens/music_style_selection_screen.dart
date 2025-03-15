@@ -18,7 +18,7 @@ class _MusicStyleSelectionState extends State<MusicStyleSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2D2926),
+      backgroundColor: Colors.white,
       appBar: CustomAppbar(title: 'Music'),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

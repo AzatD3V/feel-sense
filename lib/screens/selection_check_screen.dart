@@ -16,7 +16,7 @@ class SelectionCheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2D2926),
+      backgroundColor: Colors.white,
       appBar: const CustomAppbar(title: 'Check Info'),
       body: Padding(
         padding: const EdgeInsets.all(6.0),

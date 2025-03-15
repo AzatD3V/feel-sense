@@ -17,7 +17,7 @@ class GoogleSignButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.7,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xffed6f63),
+              backgroundColor: Colors.black,
               elevation: 5,
               shadowColor: Colors.black),
           onPressed: () {
@@ -28,22 +28,19 @@ class GoogleSignButton extends StatelessWidget {
             children: [
               Icon(
                 FontAwesomeIcons.google,
-                color: Colors.black,
+                color: Colors.white,
               ),
               Text(
                 'Sign in with Google',
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 16,
                 ),
               ),
-              Visibility(
-                visible: false,
-                child: Icon(
-                  FontAwesomeIcons.google,
-                  color: Colors.black,
-                ),
+              Icon(
+                FontAwesomeIcons.google,
+                color: Colors.transparent,
               )
             ],
           ),

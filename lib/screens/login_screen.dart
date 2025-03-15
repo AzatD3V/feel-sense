@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xxx/screens/hobbies_selection_screen.dart';
@@ -35,9 +37,20 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Color(0xff2D2926),
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/13.jpg"), fit: BoxFit.cover)),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                child: Container(
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
             FaceImage(
               width: width,
               height: height,

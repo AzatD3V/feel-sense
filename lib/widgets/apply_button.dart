@@ -19,8 +19,8 @@ class _ApplyButtonState extends State<ApplyButton> {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: widget.selectedOptions.length <= 4
-                  ? Colors.grey.shade800
-                  : Color(0xffed6f63)),
+                  ? Colors.black
+                  : Colors.green),
           onPressed: () {
             if (widget.selectedOptions.length >= 4) {
               Navigator.push(context,

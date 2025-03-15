@@ -15,15 +15,13 @@ class AppSlogan extends StatelessWidget {
           padding: EdgeInsets.only(top: 30, bottom: 30, left: 12, right: 50),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Color(0xffed6f63),
+            color: Colors.black,
           ),
           child: Text(
             textAlign: TextAlign.center,
             "Mood\nFace\nFeel\nRead\nTalk",
             style: GoogleFonts.bungee(
-                color: Color(0xff2D2926),
-                fontSize: 30,
-                fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ));
   }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xxx/screens/intro_screen.dart';
-import 'package:xxx/screens/login_screen.dart';
 import 'package:xxx/services/auth_services.dart';
 import 'package:xxx/logic/bloc/auth_bloc.dart';
 
@@ -11,8 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Color(0xffed6f63),
-      statusBarColor: Color(0xffed6f63)));
+      systemNavigationBarColor: Colors.black, statusBarColor: Colors.black));
   runApp(MyApp());
 }
 

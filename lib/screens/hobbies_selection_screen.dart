@@ -19,7 +19,7 @@ class _HobbiesSelectionScreenState extends State<HobbiesSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2D2926),
+      backgroundColor: Colors.white,
       appBar: CustomAppbar(title: 'Hobbies'),
       body: Padding(
         padding: const EdgeInsets.all(6.0),

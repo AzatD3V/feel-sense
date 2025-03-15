@@ -18,7 +18,7 @@ class AppName extends StatelessWidget {
             'Sense',
             style: GoogleFonts.cinzel(
                 fontSize: 50,
-                color: Color(0xffed6f63),
+                color: Colors.white,
                 shadows: [Shadow(color: Colors.black, blurRadius: 2)]),
           ),
           Positioned(top: -35, left: 25, child: singleChar('F')),
@@ -36,7 +36,7 @@ Widget singleChar(String singleChar) {
     singleChar,
     style: GoogleFonts.cinzel(
         fontSize: 50,
-        color: Color(0xffed6f63),
+        color: Colors.white,
         shadows: [Shadow(color: Colors.black, blurRadius: 2)]),
   );
 }
