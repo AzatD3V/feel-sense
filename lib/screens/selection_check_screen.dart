@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:xxx/logic/bloc/db_bloc.dart';
 import 'package:xxx/logic/bloc/db_event.dart';
 import 'package:xxx/logic/bloc/db_state.dart';
-import 'package:xxx/screens/home_screen.dart';
+import 'package:xxx/model/user_model.dart';
 import 'package:xxx/widgets/custom_appbar.dart';
 import 'package:xxx/widgets/nav_bar.dart';
 import 'package:xxx/widgets/options_info_widget.dart';
@@ -21,6 +21,10 @@ class SelectionCheckScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserModel user = UserModel(
+        hobbies: hobbies,
+        musicStyle: musicStyle,
+        personalityStyle: personalityStyle);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppbar(
@@ -60,10 +64,7 @@ class SelectionCheckScreen extends StatelessWidget {
                     if (state is DBLoading) CircularProgressIndicator(),
                     ElevatedButton(
                         onPressed: () {
-                          context.read<DBBlock>().add(AddUserData(
-                              hobbies: hobbies,
-                              music: musicStyle,
-                              personality: personalityStyle));
+                          context.read<DBBlock>().add(AddUserData(user: user));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white, elevation: 5),

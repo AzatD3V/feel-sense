@@ -34,8 +34,7 @@ class _MyAppState extends State<MyApp> {
           BlocProvider(create: (context) => DBBlock(DBServices())),
         ],
         child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: NavBar(),
-        ));
+            debugShowCheckedModeBanner: false, home: IntroScreen() // NavBar(),
+            ));
   }
 }

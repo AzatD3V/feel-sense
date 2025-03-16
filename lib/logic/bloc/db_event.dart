@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:xxx/model/user_model.dart';
 
 abstract class DBEvent extends Equatable {
   @override
@@ -6,14 +7,10 @@ abstract class DBEvent extends Equatable {
 }
 
 class AddUserData extends DBEvent {
-  final List<String> hobbies;
-  final List<String> music;
-  final List<String> personality;
+  final UserModel user;
 
-  AddUserData(
-      {required this.hobbies, required this.music, required this.personality});
+  AddUserData({required this.user});
 
   @override
-  // TODO: implement props
-  List<Object> get props => [hobbies, music, personality];
+  List<Object> get props => [user];
 }

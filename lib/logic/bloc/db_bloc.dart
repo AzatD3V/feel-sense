@@ -15,7 +15,7 @@ class DBBlock extends Bloc<DBEvent, DBState> {
       AddUserData event, Emitter<DBState> emit) async {
     try {
       emit(DBInitialized());
-      await _services.addInfo(event.hobbies, event.music, event.personality);
+      await _services.addInfo(event.user);
       emit(DBLoading());
       emit(DBSucces(message: "Data save succes."));
     } catch (e) {
