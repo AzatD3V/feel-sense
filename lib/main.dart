@@ -25,6 +25,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -34,7 +35,9 @@ class _MyAppState extends State<MyApp> {
           BlocProvider(create: (context) => DBBlock(DBServices())),
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false, home: IntroScreen() // NavBar(),
+            navigatorKey: navigatorKey,
+            debugShowCheckedModeBanner: false,
+            home: NavBar() // IntroScreen()
             ));
   }
 }

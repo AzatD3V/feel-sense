@@ -12,8 +12,7 @@ class ImageProcessor {
     final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile == null) {
-      throw ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Image note selected')));
+      throw Exception('Image note selected');
     }
 
     File imageFile = File(pickedFile.path);
@@ -26,7 +25,7 @@ class ImageProcessor {
     }
 
     // 64x64 boyutuna yeniden boyutlandır
-    img.Image resized = img.copyResize(image, width: 64, height: 64);
+    img.Image resized = img.copyResize(image, width: 48, height: 48);
 
     // Gri tonlamaya çevir
     img.Image grayscale = img.grayscale(resized);

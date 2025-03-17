@@ -19,4 +19,23 @@ class DBServices {
       throw Exception('Error 404');
     }
   }
+
+  Future<UserModel> getInfo() async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        throw Exception('Current user not found.');
+      }
+      final uid = currentUser.uid;
+      DocumentSnapshot<Map<String, dynamic>> doc =
+          await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+      if (!doc.exists || doc.data() == null) {
+        throw Exception("User data not found.");
+      }
+      return UserModel.fromMap(doc.data()!);
+    } catch (e) {
+      throw Exception("Error fetching user data: $e");
+    }
+  }
 }

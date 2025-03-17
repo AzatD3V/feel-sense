@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xxx/services/together_ai_services.dart';
@@ -35,7 +36,6 @@ class HomePageState extends State<HomePage> {
   void analyzeImage(ImageSource source) async {
     setState(() {
       isLoading = true;
-      aiResponse = "";
     });
 
     try {
@@ -46,11 +46,8 @@ class HomePageState extends State<HomePage> {
       });
 
       // AI'ya duygu analizi sonucunu gönder
-      String prompt =
-          "A person is feeling $emotion. Make a suggestion that will help him/her.";
-      String response = await aiService.getAIResponse(prompt);
+
       setState(() {
-        aiResponse = response;
         isLoading = false;
       });
     } catch (e) {
@@ -59,6 +56,20 @@ class HomePageState extends State<HomePage> {
         isLoading = false;
       });
     }
+  }
+
+  Future<String> getResponse() async {
+    try {
+      String prompt =
+          "Kullanici $detectedEmotion hissediyor ona yardimci olacak onerini yap lutfen.";
+      String response = await aiService.getAIResponse(prompt);
+      setState(() {
+        aiResponse = response;
+      });
+    } catch (e) {
+      detectedEmotion = "Error: ${e.toString()}";
+    }
+    return '';
   }
 
   @override
@@ -80,24 +91,6 @@ class HomePageState extends State<HomePage> {
                           Text("Emotion: $detectedEmotion",
                               style:
                                   TextStyle(fontSize: 24, color: Colors.black)),
-                          if (aiResponse.isNotEmpty)
-                            Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Container(
-                                padding: EdgeInsets.all(12),
-                                height: 300,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: Colors.black.withValues(alpha: 0.5)),
-                                child: ListView(
-                                  children: [
-                                    Text("AI Suggest: $aiResponse",
-                                        style: TextStyle(
-                                            fontSize: 18, color: Colors.white)),
-                                  ],
-                                ),
-                              ),
-                            ),
                         ],
                       ),
                 SizedBox(height: 20),
@@ -129,6 +122,34 @@ class HomePageState extends State<HomePage> {
                     child: Text(
                       'Analyze from Gallery 🖼️ ',
                       style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      getResponse();
+                    },
+                    child: Text("Oneri al ")),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
+                        color: Colors.black),
+                    child: ListView(
+                      children: [
+                        if (aiResponse.isNotEmpty)
+                          AnimatedTextKit(
+                            animatedTexts: [
+                              TyperAnimatedText(aiResponse,
+                                  textStyle: TextStyle(
+                                      fontSize: 18, color: Colors.white))
+                            ],
+                            repeatForever: false,
+                          ),
+                      ],
                     ),
                   ),
                 ),

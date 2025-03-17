@@ -17,7 +17,6 @@ class _IntroScreenState extends State<IntroScreen> {
   CameraDescription? _camera;
   ResolutionPreset? _resolutionPreset;
 
-  List<PageViewModel> pages = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
