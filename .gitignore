@@ -7,6 +7,11 @@
 .buildlog/
 .history
 
+# System Folder 
+linux
+macos
+windows
+web
 
 
 # Flutter repo-specific

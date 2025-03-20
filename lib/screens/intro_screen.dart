@@ -74,7 +74,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   SizedBox lastImage() {
     return SizedBox(
-      height: 500,
+      height: 400,
       width: 500,
       child: Image.asset(
         "assets/11.jpg",
@@ -118,7 +118,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   SizedBox secondImage() {
     return SizedBox(
-      width: 500,
+      width: 400,
       height: 500,
       child: Image.asset("assets/camera.png"),
     );
@@ -156,7 +156,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   SizedBox firstImage() {
     return SizedBox(
-      height: 500,
+      height: 400,
       width: 500,
       child: Image.asset(
         "assets/12.jpg",

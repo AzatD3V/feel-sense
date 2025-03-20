@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xxx/constant/options_list.dart';
-import 'package:xxx/screens/selection_check_screen.dart';
+import 'package:xxx/screens/info_screens/selection_check_screen.dart';
 import 'package:xxx/widgets/apply_button.dart';
 import 'package:xxx/widgets/custom_appbar.dart';
 import 'package:xxx/widgets/option_button.dart';

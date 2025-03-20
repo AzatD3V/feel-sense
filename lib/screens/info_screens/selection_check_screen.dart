@@ -22,6 +22,8 @@ class SelectionCheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserModel user = UserModel(
+        emotions: [],
+        responses: [],
         hobbies: hobbies,
         musicStyle: musicStyle,
         personalityStyle: personalityStyle);

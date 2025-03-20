@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xxx/screens/hobbies_selection_screen.dart';
+import 'package:xxx/screens/info_screens/hobbies_selection_screen.dart';
 import 'package:xxx/services/auth_services.dart';
 import 'package:xxx/logic/bloc/auth_bloc.dart';
 import 'package:xxx/logic/bloc/auth_state.dart';

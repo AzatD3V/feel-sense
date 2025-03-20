@@ -29,15 +29,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (context) => AuthBloc(authServices: AuthServices())),
-          BlocProvider(create: (context) => DBBlock(DBServices())),
-        ],
-        child: MaterialApp(
-            navigatorKey: navigatorKey,
-            debugShowCheckedModeBanner: false,
-            home: NavBar() // IntroScreen()
-            ));
+      providers: [
+        BlocProvider(
+            create: (context) => AuthBloc(authServices: AuthServices())),
+        BlocProvider(create: (context) => DBBlock(DBServices())),
+      ],
+      child: MaterialApp(
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          home: NavBar() /* IntroScreen(),*/
+          ),
+    );
   }
 }

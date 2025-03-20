@@ -12,7 +12,12 @@ class ImageProcessor {
     final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile == null) {
-      throw Exception('Image note selected');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Image not selected")));
+      }
+
+      return [];
     }
 
     File imageFile = File(pickedFile.path);
@@ -21,7 +26,11 @@ class ImageProcessor {
     img.Image? image = img.decodeImage(await imageFile.readAsBytes());
 
     if (image == null) {
-      throw Exception("Görsel çözümlenemedi!");
+      if (context.mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Image not selected")));
+      }
+      return [];
     }
 
     // 64x64 boyutuna yeniden boyutlandır
