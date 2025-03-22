@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,10 +23,10 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final ImageProcessor imageProcessor = ImageProcessor();
   final TogetherAIService _service = TogetherAIService();
   final DBServices _services = DBServices();
-  String detectedEmotion = "Not yet analyzed ";
+  String detectedEmotion = "not_yet".tr();
   String aiResponse = "";
   bool isLoading = false;
-  String aiThinking = "Hadi duygularini analiz et ve yolculuga basla";
+  String aiThinking = "aiThink1".tr();
 
   late AnimationController _contorller1;
   late AnimationController _controller2;
@@ -110,11 +111,9 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
     try {
       aiResponse = "";
       setState(() {
-        aiThinking =
-            "Verilerini analiz ediyorum ve\n sana bir oneri hazirliyorum";
+        aiThinking = "aiThink2".tr();
       });
-      String prompt =
-          "Kullanici $detectedEmotion hissediyor ona yardimci olacak onerini yap lutfen. Ve cevabin bir onceki cevap ile ayni olmasin";
+      String prompt = "prompt".tr(args: [detectedEmotion]);
       String response = await _service.getAIResponse(prompt);
       await _services.saveLastResponse(response);
       await _services.saveStatistics(getValue(detectedEmotion), response);
@@ -130,29 +129,22 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   double getValue(String emotion) {
-    switch (emotion) {
-      case "Üzgün":
-        return 0;
-
-      case "Öfke":
-        return 1;
-
-      case "Korku":
-        return 2;
-
-      case "Tiksinti":
-        return 3;
-
-      case "Nötr":
-        return 4;
-
-      case "Şaşkın":
-        return 5;
-
-      case "Mutlu":
-        return 6;
-      default:
-        throw Exception("Gecersiz duygu $emotion");
+    if (emotion == "sad".tr()) {
+      return 0;
+    } else if (emotion == "anger".tr()) {
+      return 1;
+    } else if (emotion == "fear".tr()) {
+      return 2;
+    } else if (emotion == "disgust".tr()) {
+      return 3;
+    } else if (emotion == "notr".tr()) {
+      return 4;
+    } else if (emotion == "bewildered".tr()) {
+      return 5;
+    } else if (emotion == "happy".tr()) {
+      return 6;
+    } else {
+      throw Exception("invalid_emo".tr(args: [emotion]));
     }
   }
 
@@ -179,7 +171,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   child: isLoading
                       ? CircularProgressIndicator()
                       : Text(
-                          "Emotion: $detectedEmotion",
+                          "emotion".tr(args: [detectedEmotion]),
                           style: GoogleFonts.montserrat(
                               color: Colors.white, fontSize: 20),
                         ),
@@ -194,7 +186,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
               alignment: Alignment.centerLeft,
               child: analyzeButton(
                   context,
-                  'Analyze from Camera 📸 ',
+                  'analysis_cam'.tr(),
                   () => analyzeImage(ImageSource.camera),
                   Icons.camera_alt_outlined,
                   false),
@@ -207,7 +199,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
               alignment: Alignment.centerRight,
               child: analyzeButton(
                   context,
-                  'Analyze from Gallery 🖼️ ',
+                  'analysis_gal'.tr(),
                   () => analyzeImage(ImageSource.gallery),
                   Icons.photo_library_outlined,
                   true),
@@ -233,6 +225,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
+                                textAlign: TextAlign.center,
                                 aiThinking,
                                 style: GoogleFonts.montserrat(
                                   color: Colors.white,
@@ -265,7 +258,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
                 Positioned(
                   top: -20,
-                  left: 45,
+                  left: 23,
                   child: Row(
                     children: [
                       ElevatedButton(
@@ -273,12 +266,13 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           getResponse();
                         },
                         style: ElevatedButton.styleFrom(
-                          maximumSize: Size(100, 50),
+                          maximumSize: Size(140, 50),
+                          minimumSize: Size(140, 50),
                           backgroundColor: Colors.black,
                         ),
                         child: FittedBox(
                           child: Text(
-                            "Oneri al ",
+                            "get_suggest".tr(),
                             style: GoogleFonts.montserrat(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600),
@@ -287,7 +281,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                       // ad container with border for decorations
                       Container(
-                        width: 130,
+                        width: 100,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -300,12 +294,13 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                              maximumSize: Size(100, 50),
+                              maximumSize: Size(140, 50),
+                              minimumSize: Size(140, 50),
                               elevation: 0,
                               backgroundColor: Colors.black),
                           child: FittedBox(
                             child: Text(
-                              "Oneriyi sil",
+                              "del_suggest".tr(),
                               style: GoogleFonts.montserrat(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600),

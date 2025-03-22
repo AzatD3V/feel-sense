@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -29,7 +30,7 @@ class _IntroScreenState extends State<IntroScreen> {
         key: _introKey,
         pages: [firstPage(), secondPage(), pageThree()],
         skip: Text(
-          'Skip',
+          'skip'.tr(),
           style: buttonTextStyle(),
         ),
         onSkip: onSkipOrDone,
@@ -37,7 +38,7 @@ class _IntroScreenState extends State<IntroScreen> {
           Icons.arrow_forward_ios,
         ),
         done: Text(
-          'Done',
+          'done'.tr(),
           style: buttonTextStyle(),
         ),
         onDone: onSkipOrDone,
@@ -59,14 +60,14 @@ class _IntroScreenState extends State<IntroScreen> {
     return PageViewModel(
         image: lastImage(),
         titleWidget: Text(
-          "We're here for you ",
+          "here_for_u".tr(),
           style: welcomeStyle(),
         ),
         bodyWidget: Padding(
           padding: const EdgeInsets.only(top: 50.0),
           child: Text(
             textAlign: TextAlign.center,
-            'We’ll analyze your mood and give you personalized suggestions. We’re so excited to have you with us! Let’s finish this and get started!',
+            "descp2".tr(),
             style: descripStyle(),
           ),
         ));
@@ -88,7 +89,7 @@ class _IntroScreenState extends State<IntroScreen> {
         image: secondImage(),
         titleWidget: Text(
           textAlign: TextAlign.center,
-          "Hey! Smile \n I’m taking the shot!",
+          "hey_smile".tr(),
           style: GoogleFonts.montserrat(
               color: Colors.black,
               fontSize: 30,
@@ -99,7 +100,7 @@ class _IntroScreenState extends State<IntroScreen> {
           children: [
             Text(
               textAlign: TextAlign.center,
-              "We need access to your camera to perform facial analysis. \n But don’t worry—your photo is processed entirely on your device and is never sent to any server.\n Your data is safe!",
+              "camera_access".tr(),
               style: descripStyle(),
             ),
             SizedBox(
@@ -109,7 +110,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 onPressed: _initCamera,
                 style: skipButtonStyle(),
                 child: Text(
-                  "Allow Camera for Face Analysis",
+                  "camera_access_button".tr(),
                   style: buttonTextStyle(),
                 ))
           ],
@@ -130,12 +131,12 @@ class _IntroScreenState extends State<IntroScreen> {
         titleWidget: Column(
           children: [
             Text(
-              'WELCOME',
+              'welcome'.tr(),
               style: welcomeStyle(),
             ),
             Text(
               textAlign: TextAlign.center,
-              "We're glad to see you here.",
+              "glad_to_see".tr(),
               style: messageStyle(),
             )
           ],
@@ -147,7 +148,7 @@ class _IntroScreenState extends State<IntroScreen> {
             ),
             Text(
               textAlign: TextAlign.center,
-              "Discover your emotions with the power of AI, gain a deeper understanding of yourself, and take control of your life with confidence. \n Take the first step now to explore yourself, manage your emotions, and live a more balanced life!",
+              "descp1".tr(),
               style: descripStyle(),
             ),
           ],

@@ -56,16 +56,15 @@ class ResponseListWidget extends StatelessWidget {
                           ),
                         ),
                         actions: [
-                          ElevatedButton(
+                          TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white),
                               child: Text(
                                 "Close",
-                                style:
-                                    GoogleFonts.montserrat(color: Colors.black),
+                                style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
                               ))
                         ],
                       );

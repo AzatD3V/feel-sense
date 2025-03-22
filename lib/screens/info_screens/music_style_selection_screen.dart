@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:xxx/constant/options_list.dart';
 import 'package:xxx/screens/info_screens/personality_selection_screen.dart';
@@ -20,7 +21,7 @@ class _MusicStyleSelectionState extends State<MusicStyleSelection> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppbar(
-        title: 'Music',
+        title: 'music'.tr(),
         action: ApplyButton(
             screen: ProfileScreen(
               hobbies: widget.hobbies,
@@ -43,7 +44,7 @@ class _MusicStyleSelectionState extends State<MusicStyleSelection> {
                           selectedOptions = value;
                         });
                       },
-                      title: 'Choose your Music style'),
+                      title: 'choose_music'.tr()),
                   SizedBox(
                     height: 20,
                   ),

@@ -1,11 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class ConstantList {
   static final List<String> emotions = [
-    "Üzgün",
-    "Öfke",
-    "Korku",
-    "Tiksinti",
-    "Nötr",
-    "Şaşkın",
-    "Mutlu",
+    "sad".tr(),
+    "anger".tr(),
+    "fear".tr(),
+    "disgust".tr(),
+    "notr".tr(),
+    "bewildered".tr(),
+    "happy".tr(),
   ];
 }

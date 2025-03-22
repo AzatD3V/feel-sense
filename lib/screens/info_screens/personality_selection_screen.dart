@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:xxx/constant/options_list.dart';
 import 'package:xxx/screens/info_screens/selection_check_screen.dart';
@@ -22,7 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
-        title: 'Personality',
+        title: 'personality'.tr(),
         action: ApplyButton(
             screen: SelectionCheckScreen(
                 hobbies: widget.hobbies,
@@ -45,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         selectedOptions = value;
                       });
                     },
-                    title: 'Choose your Personality'),
+                    title: 'choose_person'.tr()),
                 SizedBox(
                   height: 20,
                 ),

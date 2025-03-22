@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,7 @@ class SelectionCheckScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppbar(
-          title: 'Check Info',
+          title: 'check_info'.tr(),
         ),
         body: BlocConsumer<DBBlock, DBState>(
           listener: (context, state) {
@@ -54,14 +55,14 @@ class SelectionCheckScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    OptionsInfoWidget(options: hobbies, title: 'Your Hobbies'),
+                    OptionsInfoWidget(options: hobbies, title: 'hobbies'.tr()),
                     OptionsInfoWidget(
                       options: musicStyle,
-                      title: 'Your Music Style',
+                      title: "music".tr(),
                     ),
                     OptionsInfoWidget(
                       options: personalityStyle,
-                      title: 'Your Personality',
+                      title: 'personality'.tr(),
                     ),
                     if (state is DBLoading) CircularProgressIndicator(),
                     ElevatedButton(
@@ -71,7 +72,7 @@ class SelectionCheckScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white, elevation: 5),
                         child: Text(
-                          'Save All',
+                          'save_all'.tr(),
                           style: GoogleFonts.montserrat(
                               color: Colors.black,
                               fontSize: 16,

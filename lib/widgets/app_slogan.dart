@@ -10,7 +10,7 @@ class AppSlogan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
         left: width * 0.7,
-        top: height * 0.4,
+        top: height * 0.45,
         child: Container(
           padding: EdgeInsets.only(top: 30, bottom: 30, left: 12, right: 50),
           decoration: BoxDecoration(

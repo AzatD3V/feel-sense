@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:xxx/constant/options_list.dart';
 import 'package:xxx/screens/info_screens/music_style_selection_screen.dart';
@@ -21,7 +22,7 @@ class _HobbiesSelectionScreenState extends State<HobbiesSelectionScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppbar(
-        title: 'Hobbies',
+        title: 'hobbies'.tr(),
         action: ApplyButton(
             screen: MusicStyleSelection(hobbies: selectedOptions),
             selectedOptions: selectedOptions),
@@ -34,7 +35,7 @@ class _HobbiesSelectionScreenState extends State<HobbiesSelectionScreen> {
               child: ListView(
                 children: [
                   OptionButton(
-                      title: 'Choose your Hobbies',
+                      title: 'choose_hobbies'.tr(),
                       options: OptionsList.hobbys,
                       selectedOptions: (value) {
                         setState(() {

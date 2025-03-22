@@ -1,6 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:xxx/model/user_model.dart';
 import 'package:xxx/services/db_services.dart';
 import 'package:xxx/widgets/custom_appbar.dart';
@@ -28,39 +27,39 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     List<double> listEmotions = [];
     List<String> responses = [];
 
-    // Duygu indeksleri ve karşılık gelen isimleri
-
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: CustomAppbar(title: "Istatistik"),
-        body: FutureBuilder(
-          future: _userData,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (snapshot.hasError || !snapshot.hasData) {
-              return Center(
-                child: Text("Data fetch error"),
-              );
-            }
-
-            UserModel user = snapshot.data!;
-
-            listEmotions = user.emotions;
-            responses = user.responses;
-
-            return Column(
-              children: [
-                StatisticsWidget(
-                    listEmotions: listEmotions, responses: responses),
-                ResponseListWidget(
-                    listEmotions: listEmotions, responses: responses)
-              ],
+      backgroundColor: Colors.white,
+      appBar: CustomAppbar(title: "statistics".tr()),
+      body: FutureBuilder(
+        future: _userData,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
             );
-          },
-        ));
+          }
+          if (snapshot.hasError || !snapshot.hasData) {
+            return Center(
+              child: Text("Data fetch error"),
+            );
+          }
+
+          UserModel user = snapshot.data!;
+
+          listEmotions = user.emotions;
+          responses = user.responses;
+
+          return Column(
+            children: [
+              StatisticsWidget(
+                  listEmotions: listEmotions, responses: responses),
+              ResponseListWidget(
+                  listEmotions: listEmotions.reversed.toList(),
+                  responses: responses.reversed.toList())
+            ],
+          );
+        },
+      ),
+    );
   }
 }

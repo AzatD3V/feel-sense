@@ -7,7 +7,7 @@ import 'package:xxx/logic/bloc/auth_state.dart';
 import 'package:xxx/widgets/app_name.dart';
 import 'package:xxx/widgets/app_slogan.dart';
 import 'package:xxx/widgets/google_sign_button.dart';
-import 'package:xxx/widgets/image_opacty.dart';
+import 'package:xxx/widgets/login_background.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,10 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
         if (state is Authenticated) {
-          Navigator.pushReplacement(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
                 builder: (context) => const HobbiesSelectionScreen()),
+            (route) => false,
           );
         }
       },
@@ -48,10 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.white,
         body: Stack(
           children: [
-            FaceImage(
-              width: width,
-              height: height,
-            ),
+            LoginBackground(),
             AppName(width: width, height: height),
             AppSlogan(width: width, height: height),
             Center(

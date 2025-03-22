@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
@@ -15,26 +16,20 @@ class GoogleSignButton extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.06,
         width: MediaQuery.of(context).size.width * 0.7,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              elevation: 5,
-              shadowColor: Colors.black),
-          onPressed: () {
-            context.read<AuthBloc>().add(SignInWithGoogle());
-          },
+        child: GestureDetector(
+          onTap: () => context.read<AuthBloc>().add(SignInWithGoogle()),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Icon(
                 FontAwesomeIcons.google,
-                color: Colors.white,
+                color: Colors.black,
               ),
               Text(
-                'Sign in with Google',
+                'google_sign'.tr(),
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 16,
                 ),
               ),
