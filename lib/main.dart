@@ -3,11 +3,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xxx/logic/bloc/db_bloc.dart';
-import 'package:xxx/screens/intro_screen.dart';
-import 'package:xxx/services/auth_services.dart';
-import 'package:xxx/logic/bloc/auth_bloc.dart';
-import 'package:xxx/services/db_services.dart';
+import 'package:xxx/core/config/theme.dart';
+import 'package:xxx/logic/blocs/db/db_bloc.dart';
+import 'package:xxx/presentation/screens/intro_screen.dart';
+import 'package:xxx/presentation/screens/new_screen.dart';
+import 'package:xxx/data/repositories/auth_services.dart';
+import 'package:xxx/logic/blocs/auth/auth_bloc.dart';
+import 'package:xxx/data/repositories/db_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +47,10 @@ class _MyAppState extends State<MyApp> {
         locale: context.locale,
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: IntroScreen(),
+        home:
+            // NewScreen()
+            IntroScreen(),
+        theme: AppTheme.light,
       ),
     );
   }
